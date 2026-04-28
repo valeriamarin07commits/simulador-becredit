@@ -25,58 +25,9 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
-    overflow: hidden;
     position: relative;
   }
 
-  
-
-  
-
-  
-
-  
-
-  /* Header con logo */
-  .header {
-    text-align: center;
-    margin-bottom: 36px;
-    position: relative;
-    z-index: 10;
-  }
-
-  .logo {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .logo .be { color: var(--white); }
-  .logo .c-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 2px;
-  }
-
-  .logo .c-icon svg { width: 32px; height: 32px; }
-  .logo .redit { color: var(--white); }
-
-  .tagline {
-    font-size: 0.85rem;
-    color: var(--blueprint);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    margin-top: 6px;
-    text-transform: uppercase;
-  }
-
-  /* Card principal */
   .card {
     background: var(--white);
     border-radius: 24px;
@@ -85,7 +36,7 @@
     max-width: 500px;
     position: relative;
     z-index: 10;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(90,227,226,0.1);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.15), 0 0 0 1px rgba(90,227,226,0.1);
   }
 
   .card-title {
@@ -103,7 +54,6 @@
     margin-bottom: 32px;
   }
 
-  /* Monto */
   .amount-display {
     display: flex;
     align-items: center;
@@ -130,7 +80,7 @@
   }
 
   .amount-btn:hover {
-    background: transparent;
+    background: var(--cosmos);
     color: var(--white);
   }
 
@@ -142,7 +92,6 @@
     letter-spacing: -1px;
   }
 
-  /* Slider */
   .slider-container { margin-bottom: 28px; }
 
   input[type="range"] {
@@ -160,22 +109,20 @@
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: transparent;
+    background: var(--cosmos);
     border: 3px solid var(--blueprint);
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(1,5,59,0.3);
     transition: transform 0.15s;
   }
 
-  input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.15);
-  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
 
   input[type="range"]::-moz-range-thumb {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: transparent;
+    background: var(--cosmos);
     border: 3px solid var(--blueprint);
     cursor: pointer;
   }
@@ -192,7 +139,6 @@
     font-weight: 500;
   }
 
-  /* Selector de plazo */
   .plazo-label {
     font-size: 0.8rem;
     font-weight: 600;
@@ -236,14 +182,13 @@
   }
 
   .plazo-btn.active {
-    background: transparent;
-    border-color: var(--cosmos);
-    color: var(--white);
+    background: var(--cosmos) !important;
+    border-color: var(--cosmos) !important;
+    color: var(--white) !important;
   }
 
-  .plazo-btn.active span { color: var(--blueprint); }
+  .plazo-btn.active span { color: var(--blueprint) !important; }
 
-  /* Resultado */
   .result-box {
     background: linear-gradient(135deg, var(--cosmos) 0%, var(--cosmos-light) 100%);
     border-radius: 16px;
@@ -293,8 +238,8 @@
     margin-top: 4px;
   }
 
-  /* Botón CTA */
   .cta-btn {
+    display: block;
     width: 100%;
     padding: 16px;
     background: var(--blueprint);
@@ -307,6 +252,8 @@
     cursor: pointer;
     transition: all 0.2s;
     letter-spacing: 0.3px;
+    text-align: center;
+    text-decoration: none;
   }
 
   .cta-btn:hover {
@@ -315,9 +262,6 @@
     box-shadow: 0 8px 24px rgba(90,227,226,0.3);
   }
 
-  .cta-btn:active { transform: translateY(0); }
-
-  /* Requisitos */
   .requisitos {
     margin-top: 16px;
     font-size: 0.72rem;
@@ -326,39 +270,28 @@
     line-height: 1.5;
   }
 
-  .req-icon { color: var(--blueprint); margin-right: 4px; }
-
-  /* Nota legal */
   .legal-note {
-    margin-top: 20px;
+    margin-top: 16px;
     font-size: 0.65rem;
-    color: rgba(255,255,255,0.35);
+    color: #bbb;
     text-align: center;
     max-width: 500px;
     line-height: 1.5;
-    position: relative;
-    z-index: 10;
   }
 </style>
 </head>
 <body>
 
-
-
-
-
 <div class="card">
   <div class="card-title">Te prestamos hasta<br><strong style="color:var(--cosmos);">$200,000</strong></div>
   <div class="card-subtitle">Obtén tu estimado de pago mensual al instante</div>
 
-  <!-- Monto -->
   <div class="amount-display">
-    <button class="amount-btn" id="btnMenos" onclick="cambiarMonto(-5000)">−</button>
+    <button class="amount-btn" onclick="cambiarMonto(-5000)">−</button>
     <div class="amount-value" id="montoDisplay">$50,000</div>
-    <button class="amount-btn" id="btnMas" onclick="cambiarMonto(5000)">+</button>
+    <button class="amount-btn" onclick="cambiarMonto(5000)">+</button>
   </div>
 
-  <!-- Slider -->
   <div class="slider-container">
     <input type="range" id="slider" min="13000" max="200000" step="1000" value="50000"
            oninput="actualizarDesdeSlider(this.value)">
@@ -368,7 +301,6 @@
     </div>
   </div>
 
-  <!-- Plazo -->
   <div class="plazo-label">Plazo</div>
   <div class="plazo-grid">
     <button class="plazo-btn" onclick="seleccionarPlazo(12, this)">12<span>meses</span></button>
@@ -378,42 +310,38 @@
     <button class="plazo-btn" onclick="seleccionarPlazo(48, this)">48<span>meses</span></button>
   </div>
 
-  <!-- Resultado -->
   <div class="result-box">
     <div class="result-label">Pago mensual estimado</div>
     <div class="result-amount" id="pagoMensual">$0.00</div>
     <div class="result-detail" id="detallePlazo">24 mensualidades · sujeto a aprobación</div>
   </div>
 
-  <!-- CTA -->
-  <button class="cta-btn" onclick="solicitarCredito()">¡Solicítalo ahora!</button>
+  <a class="cta-btn"
+     href="mailto:hola@becredit.mx?subject=Solicitud%20de%20Cr%C3%A9dito%20Personal&body=Hola%2C%20me%20interesa%20solicitar%20un%20cr%C3%A9dito%20personal.%20Por%20favor%20cont%C3%A1ctenme.">
+    ¡Solicítalo ahora!
+  </a>
 
-  <!-- Requisitos -->
   <div class="requisitos">
-    <span class="req-icon">📋</span> Necesitarás: Identificación oficial vigente, comprobante de ingresos
-    y cuenta bancaria a tu nombre.
+    📋 Necesitarás: Identificación oficial vigente, comprobante de ingresos y cuenta bancaria a tu nombre.
   </div>
 </div>
 
 <div class="legal-note">
-  * El pago mensual mostrado es un estimado referencial.
-  La tasa, condiciones y monto final están sujetos a evaluación crediticia.
+  * Estimado referencial. Condiciones y monto final sujetos a evaluación crediticia. Be Credit es una línea de negocios de Be Block.
 </div>
 
 <script>
-  // ——— Parámetros del modelo de amortización (tomados del xlsx) ———
-  const TASA_MENSUAL = 0.0683;        // 6.83% mensual
-  const IVA          = 0.16;          // 16% sobre intereses
-  const SEGURO       = 375;           // $375 fijo por mes, independiente del monto
+  const TASA_MENSUAL = 0.0683;
+  const IVA = 0.16;
+  const SEGURO = 375;
 
-  let monto  = 50000;
-  let plazo  = 24;
-  let plazoActivo = document.querySelector('.plazo-btn.active');
+  var monto = 50000;
+  var plazo = 24;
+  var plazoActivo = document.querySelector('.plazo-btn.active');
 
   function calcularPago(m, p) {
-    // PMT = M * (tasa*(1+IVA)) / (1 - (1+tasa*(1+IVA))^-n) + seguro fijo
-    const tasaEfectiva = TASA_MENSUAL * (1 + IVA);
-    const pmt = m * tasaEfectiva / (1 - Math.pow(1 + tasaEfectiva, -p));
+    var tasaEfectiva = TASA_MENSUAL * (1 + IVA);
+    var pmt = m * tasaEfectiva / (1 - Math.pow(1 + tasaEfectiva, -p));
     return pmt + SEGURO;
   }
 
@@ -425,24 +353,19 @@
   }
 
   function actualizar() {
-    const pago = calcularPago(monto, plazo);
-    const el   = document.getElementById('pagoMensual');
-
+    var pago = calcularPago(monto, plazo);
+    var el = document.getElementById('pagoMensual');
     el.classList.add('updating');
-    setTimeout(() => {
+    setTimeout(function() {
       el.textContent = formatMXN(pago);
       el.classList.remove('updating');
     }, 120);
-
-    document.getElementById('detallePlazo').textContent =
-      `${plazo} mensualidades · sujeto a aprobación`;
+    document.getElementById('detallePlazo').textContent = plazo + ' mensualidades · sujeto a aprobación';
     document.getElementById('montoDisplay').textContent =
       new Intl.NumberFormat('es-MX', {style:'currency', currency:'MXN', maximumFractionDigits:0}).format(monto);
-
-    // Actualizar color del slider
-    const pct = ((monto - 13000) / (200000 - 13000)) * 100;
+    var pct = ((monto - 13000) / (200000 - 13000)) * 100;
     document.getElementById('slider').style.background =
-      `linear-gradient(to right, #01053b ${pct}%, #D9D9D9 ${pct}%)`;
+      'linear-gradient(to right, #01053b ' + pct + '%, #D9D9D9 ' + pct + '%)';
   }
 
   function actualizarDesdeSlider(val) {
@@ -458,14 +381,12 @@
 
   function seleccionarPlazo(p, btn) {
     plazo = p;
-    if (plazoActivo) plazoActivo.classList.remove('active');
+    if (plazoActivo) {
+      plazoActivo.classList.remove('active');
+    }
     btn.classList.add('active');
     plazoActivo = btn;
     actualizar();
-  }
-
-  function solicitarCredito() {
-    alert('¡Gracias por tu interés! Un asesor de Be Credit se comunicará contigo pronto.');
   }
 
   actualizar();
